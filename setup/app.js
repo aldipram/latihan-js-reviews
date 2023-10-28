@@ -30,11 +30,38 @@ const reviews = [
   },
 ];
 // select items
-const img = document.getElementById('person-img');
+const image = document.getElementById('person-img');
 const author = document.getElementById('author');
-const job = document.getElementById('job');
+const jobs = document.getElementById('job');
 const info = document.getElementById('info');
-
+    
 const prevBtn = document.querySelector('.prev-btn');
 const nextBtn = document.querySelector('.next-btn');
 const randomBtn = document.querySelector('.random-btn');
+  
+  let currentIndex = 0;
+
+function displayReview(index) {
+  const {nama, job, img, text} = reviews[index];
+  image.src = img;
+  author.textContent = nama;
+  jobs.textContent = job;
+  info.textContent = text;
+}
+
+displayReview(currentIndex);
+
+prevBtn.addEventListener("click", () => {
+  currentIndex = (currentIndex - 1 + reviews.length) % reviews.length;
+  displayReview(currentIndex);
+});
+
+nextBtn.addEventListener("click", () => {
+  currentIndex = (currentIndex + 1) % reviews.length;
+  displayReview(currentIndex);
+});
+
+randomBtn.addEventListener("click", () => {
+  currentIndex = Math.floor(Math.random() * reviews.length);
+  displayReview(currentIndex);
+});
