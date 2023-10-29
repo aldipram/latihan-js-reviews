@@ -42,9 +42,9 @@ const randomBtn = document.querySelector('.random-btn');
   let currentIndex = 0;
 
 function displayReview(index) {
-  const {nama, job, img, text} = reviews[index];
+  const {name, job, img, text} = reviews[index];
   image.src = img;
-  author.textContent = nama;
+  author.textContent = name;
   jobs.textContent = job;
   info.textContent = text;
 }
